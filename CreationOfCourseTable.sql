@@ -18,4 +18,4 @@ CREATED_DATE date
  --- unique ------
  alter table courses add constraint uq_COURSE_CODE unique(COURSE_CODE);
  ---- check -----
-  alter table courses add constraint ck_course_status check(upper(status)in('active','inactive'));
+  alter table courses add constraint ck_course_status check(upper(status)in('ACTIVE','INACTIVE'));
