@@ -1,0 +1,17 @@
+
+CREATE TABLE departments (
+    department_id    NUMBER,
+    department_name  VARCHAR2(90),
+    department_code  VARCHAR2(30),
+    status           VARCHAR2(90),
+    creation_date    DATE
+);
+
+-- Primary Key
+ALTER TABLE departments ADD CONSTRAINT pk_department_id PRIMARY KEY (department_id);
+
+-- Status validation
+ALTER TABLE departments ADD CONSTRAINT chk_department_status CHECK (UPPER(status) IN ('ACTIVE', 'INACTIVE'));
+
+-- Default creation date
+ALTER TABLE departments MODIFY creation_date DEFAULT SYSDATE;
