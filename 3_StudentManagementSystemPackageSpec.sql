@@ -9,6 +9,7 @@ is
                                p_phone students.phone%type,
                                p_department_id students.department_id%type,
                                p_status students.status%type,
+                               p_faculty_id Student.faculty_id%type,
                                p_student_name students.student_name%type,
                                p_user_id number);
                                
@@ -19,6 +20,7 @@ is
                             p_phone students.phone%type,
                             p_department_id students.department_id%type,
                             p_status students.status%type,
+                            p_faculty_id Student.faculty_id%type,
                             p_user_id number);
                             
    procedure sp_deactivate_student(p_student_id students.student_id%type,p_user_id number);
