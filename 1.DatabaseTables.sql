@@ -9,6 +9,7 @@ CREATE TABLE students (
     phone           VARCHAR2(10),
     department_id   NUMBER,
     status          VARCHAR2(30),
+    faculty_id      number,
     created_date    DATE
 );
 
@@ -28,16 +29,39 @@ ALTER TABLE students ADD CONSTRAINT chk_gender CHECK (UPPER(gender) IN ('F', 'M'
 -- Phone validation
 ALTER TABLE students ADD CONSTRAINT chk_phone CHECK (LENGTH(phone) = 10);
 
--- Department foreign key
+---  foreign key ----
 ALTER TABLE students ADD CONSTRAINT fk_department_id FOREIGN KEY (department_id) REFERENCES departments(department_id);
+ALTER TABLE students ADD CONSTRAINT fk_faculty_id FOREIGN KEY (faculty_id) REFERENCES faculty(faculty_id);
 
--- Status validation
+
+-- Status validation ---
 ALTER TABLE students ADD CONSTRAINT ck_status CHECK (UPPER(status) IN ('ACTIVE', 'INACTIVE'));
 
--- Default creation date
+-- Default creation date ---
 ALTER TABLE students MODIFY created_date DEFAULT SYSDATE;
 
+----=======================================================-----
+        ---=======> faculty table <======--
 
+  create table faculty(
+    faculty_id  number primary key,
+    faculty_name varchar2(100) not null,
+    date_of_birth date,
+    gender varchar2(10) not null,
+    email varchar2(100) unique,
+    phone varchar2(15) unique,
+    department_id number not null,
+    subject_id number not null,
+    designation  varchar2(50) not null,
+    joining_date date not null,
+    status varchar2(10) default 'ACTIVE' not null
+);
+    ---- foreign keys ---
+    alter table faculty add constraint fk_faculty_department foreign key (department_id) references departments(department_id);
+    alter table faculty add constraint fk_faculty_subject foreign key(subject_id) references subjects(subject_id);
+ ----- chek ----
+  alter table faculty add constraint  chk_faculty_gender check (upper(gender) in ('M','F','O'));
+   alter table faculty add constraint  chk_faculty_status check (upper(status) in ('ACTIVE','INACTIVE'));
              
  ---=======================================================================================
                              ---========> Courses table <========----
