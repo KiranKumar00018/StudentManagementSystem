@@ -35,3 +35,7 @@ increment by 1;
 create sequence sq_error_id
 start with 1
 increment by 1;
+----- sequence for sq_faculty_id ----
+create sequence sq_faculty_id
+start with 1
+incement by 1;
