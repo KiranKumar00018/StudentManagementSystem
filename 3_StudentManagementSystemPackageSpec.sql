@@ -1,6 +1,6 @@
            ---======= package specification ====-------
 
-create or replace package pkg_studentmanagement
+CREATE or REPLACE PACKAGE pkg_studentmanagement
 is
    procedure sp_update_student(p_student_id students.student_id%type, 
                                p_date_of_birth students.date_of_birth%type,
