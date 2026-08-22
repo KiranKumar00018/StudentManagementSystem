@@ -1,2 +1,2 @@
-*.pls linguist-language =PLSQL
+*.sql linguist-language =PLSQL
 *.pls linguist-detectable =true
